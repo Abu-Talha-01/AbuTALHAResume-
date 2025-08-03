@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abu Talha - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .resume-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .resume-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #4CAF50, #45a049, #2196F3, #1976D2);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 20px solid #45a049;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .title {
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 15px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .contact-item i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .main-content {
+            padding: 40px;
+            margin-top: 20px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #4CAF50;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #2196F3;
+        }
+        
+        .experience-item, .education-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #4CAF50;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .experience-item:hover, .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .company {
+            font-size: 1.1rem;
+            color: #4CAF50;
+            font-weight: 500;
+        }
+        
+        .duration {
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .job-description {
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .job-description ul {
+            padding-left: 20px;
+        }
+        
+        .job-description li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .job-description li::marker {
+            color: #4CAF50;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 4px solid #4CAF50;
+        }
+        
+        .skill-category h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(76, 175, 80, 0.3);
+        }
+        
+        .achievements {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #ff9800;
+        }
+        
+        .achievements h4 {
+            color: #e65100;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .achievements ul {
+            padding-left: 20px;
+        }
+        
+        .achievements li {
+            color: #bf360c;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .duration {
+                margin-top: 10px;
+            }
+            
+            .main-content {
+                padding: 25px;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .resume-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .experience-item:hover, .education-item:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="header">
+            <h1>ABU TALHA</h1>
+            <div class="title">Full Stack Developer & Python Specialist</div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    📞 6261525219
+                </div>
+                <div class="contact-item">
+                    ✉️ abutalhaa551@gmail.com
+                </div>
+                <div class="contact-item">
+                    🔗 LinkedIn Profile
+                </div>
+                <div class="contact-item">
+                    📍 Budhwara, Bhopal, MP
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="section">
+                <h2 class="section-title">Professional Summary</h2>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #555; background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 5px solid #2196F3;">
+                    Dynamic and results-driven Computer Science Engineering student with <strong>1+ years of hands-on experience</strong> in full-stack development, Python programming, and machine learning. Proven track record in developing scalable web applications using Django, React, and modern frameworks. Strong background in training and mentoring, with expertise in both technical development and business solutions.
+                </p>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Professional Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Full Stack Developer Intern</div>
+                            <div class="company">Tech Solutions Company</div>
+                        </div>
+                        <div class="duration">Oct 2023 - Present</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li><strong>Developed comprehensive E-Commerce Application</strong> using Django Rest Framework and React, handling end-to-end development cycle</li>
+                            <li><strong>Built and optimized responsive web interfaces</strong> using HTML, CSS, Bootstrap, and JavaScript, ensuring cross-platform compatibility</li>
+                            <li><strong>Designed scalable backend systems</strong> for restaurant digital services, improving operational efficiency by 40%</li>
+                            <li><strong>Implemented advanced ML models</strong> including regression, classification, CNN, RNN, and LSTM for data-driven solutions</li>
+                            <li><strong>Collaborated with cross-functional teams</strong> to resolve complex technical challenges and deliver projects on time</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Co-Trainer (Python & Web Development)</div>
+                            <div class="company">Educational Institution</div>
+                        </div>
+                        <div class="duration">Jul 2024 - Nov 2024</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li><strong>Conducted comprehensive training sessions</strong> on Python, SQL, HTML, CSS, and JavaScript for 50+ students</li>
+                            <li><strong>Mentored students in web development projects</strong>, achieving 95% project completion rate</li>
+                            <li><strong>Co-developed E-Commerce Mobile Application</strong> using Django backend and React frontend</li>
+                            <li><strong>Created curriculum and learning materials</strong> for practical, industry-relevant programming skills</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Bachelor of Technology (B.Tech)</div>
+                            <div class="company">Computer Science Engineering - All Saints' College of Technology</div>
+                        </div>
+                        <div class="duration">2021 - 2025</div>
+                    </div>
+                    <div class="job-description">
+                        <p>Specialization in Software Development, Data Structures, Algorithms, and Machine Learning</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Backend Development</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Django</span>
+                            <span class="skill-tag">Django REST</span>
+                            <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">MSSQL</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Frontend Development</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">React JS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">Bootstrap</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Data Science & ML</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">Scikit-Learn</span>
+                            <span class="skill-tag">CNN/RNN/LSTM</span>
+                            <span class="skill-tag">Matplotlib</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Other Skills</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">UI/UX Design</span>
+                            <span class="skill-tag">Data Structures</span>
+                            <span class="skill-tag">Team Leadership</span>
+                            <span class="skill-tag">Training</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="achievements">
+                    <h4>🏆 Key Achievements & Value Propositions</h4>
+                    <ul>
+                        <li>Successfully developed and deployed multiple full-stack applications with 99% uptime</li>
+                        <li>Trained 50+ students with 95% success rate in web development and Python programming</li>
+                        <li>Implemented ML solutions that improved business processes by 40%</li>
+                        <li>Strong problem-solving abilities with experience in both technical and business development</li>
+                        <li>Excellent communication skills proven through training and cross-functional collaboration</li>
+                        <li>Ready to contribute immediately to Python development, React JS projects, and business development initiatives</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+                      </html>
